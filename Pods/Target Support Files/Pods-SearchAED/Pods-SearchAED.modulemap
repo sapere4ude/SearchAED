@@ -1,0 +1,6 @@
+framework module Pods_SearchAED {
+  umbrella header "Pods-SearchAED-umbrella.h"
+
+  export *
+  module * { export * }
+}

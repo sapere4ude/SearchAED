@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		368C440B572700BB57BA3450 /* Pods_SearchAED_SearchAEDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B944B6DC238F1015C88FBF5 /* Pods_SearchAED_SearchAEDUITests.framework */; };
+		AC68A95D8B98D4406E72D74A /* Pods_SearchAEDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF739C553F19B1376306C2A /* Pods_SearchAEDTests.framework */; };
+		FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE4252D83E300051B01 /* AppDelegate.swift */; };
+		FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE6252D83E300051B01 /* SceneDelegate.swift */; };
+		FA890DEC252D83E300051B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA890DEA252D83E300051B01 /* Main.storyboard */; };
+		FA890DEE252D83E600051B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA890DED252D83E600051B01 /* Assets.xcassets */; };
+		FA890DF1252D83E600051B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA890DEF252D83E600051B01 /* LaunchScreen.storyboard */; };
+		FA890DFC252D83E600051B01 /* SearchAEDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DFB252D83E600051B01 /* SearchAEDTests.swift */; };
+		FA890E07252D83E600051B01 /* SearchAEDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E06252D83E600051B01 /* SearchAEDUITests.swift */; };
+		FA890E18252D840200051B01 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E17252D840200051B01 /* APIDefine.swift */; };
+		FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE8252D83E300051B01 /* ViewController.swift */; };
+		FD84058C2E11423112D91E3A /* Pods_SearchAED.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3A0EEF4B48592A9191DF7A /* Pods_SearchAED.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA890DF8252D83E600051B01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA890DD9252D83E300051B01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA890DE0252D83E300051B01;
+			remoteInfo = SearchAED;
+		};
+		FA890E03252D83E600051B01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA890DD9252D83E300051B01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA890DE0252D83E300051B01;
+			remoteInfo = SearchAED;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0550F5DA8E16CD93912CBA64 /* Pods-SearchAEDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAEDTests.release.xcconfig"; path = "Target Support Files/Pods-SearchAEDTests/Pods-SearchAEDTests.release.xcconfig"; sourceTree = "<group>"; };
+		0B944B6DC238F1015C88FBF5 /* Pods_SearchAED_SearchAEDUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchAED_SearchAEDUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30DDF6452673E0A54DB62133 /* Pods-SearchAED-SearchAEDUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAED-SearchAEDUITests.debug.xcconfig"; path = "Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4943796CD72D63D98FD1743D /* Pods-SearchAED.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAED.debug.xcconfig"; path = "Target Support Files/Pods-SearchAED/Pods-SearchAED.debug.xcconfig"; sourceTree = "<group>"; };
+		5C0C304DBDCB25FE4D944AFF /* Pods-SearchAED.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAED.release.xcconfig"; path = "Target Support Files/Pods-SearchAED/Pods-SearchAED.release.xcconfig"; sourceTree = "<group>"; };
+		6B3A0EEF4B48592A9191DF7A /* Pods_SearchAED.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchAED.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF739C553F19B1376306C2A /* Pods_SearchAEDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchAEDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4019CAE4877124FF18C1C3F /* Pods-SearchAEDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAEDTests.debug.xcconfig"; path = "Target Support Files/Pods-SearchAEDTests/Pods-SearchAEDTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F59F38C9A5E2029CB5167577 /* Pods-SearchAED-SearchAEDUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAED-SearchAEDUITests.release.xcconfig"; path = "Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FA890DE1252D83E300051B01 /* SearchAED.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchAED.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA890DE4252D83E300051B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA890DE6252D83E300051B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FA890DE8252D83E300051B01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA890DEB252D83E300051B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA890DED252D83E600051B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA890DF0252D83E600051B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA890DF2252D83E600051B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA890DF7252D83E600051B01 /* SearchAEDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchAEDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA890DFB252D83E600051B01 /* SearchAEDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAEDTests.swift; sourceTree = "<group>"; };
+		FA890DFD252D83E600051B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA890E02252D83E600051B01 /* SearchAEDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchAEDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA890E06252D83E600051B01 /* SearchAEDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAEDUITests.swift; sourceTree = "<group>"; };
+		FA890E08252D83E600051B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA890E17252D840200051B01 /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA890DDE252D83E300051B01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD84058C2E11423112D91E3A /* Pods_SearchAED.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890DF4252D83E600051B01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC68A95D8B98D4406E72D74A /* Pods_SearchAEDTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890DFF252D83E600051B01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368C440B572700BB57BA3450 /* Pods_SearchAED_SearchAEDUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F94EC5D3AE93EF675B3442E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4943796CD72D63D98FD1743D /* Pods-SearchAED.debug.xcconfig */,
+				5C0C304DBDCB25FE4D944AFF /* Pods-SearchAED.release.xcconfig */,
+				30DDF6452673E0A54DB62133 /* Pods-SearchAED-SearchAEDUITests.debug.xcconfig */,
+				F59F38C9A5E2029CB5167577 /* Pods-SearchAED-SearchAEDUITests.release.xcconfig */,
+				D4019CAE4877124FF18C1C3F /* Pods-SearchAEDTests.debug.xcconfig */,
+				0550F5DA8E16CD93912CBA64 /* Pods-SearchAEDTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E58330DDCBE4063F17ED9EF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B3A0EEF4B48592A9191DF7A /* Pods_SearchAED.framework */,
+				0B944B6DC238F1015C88FBF5 /* Pods_SearchAED_SearchAEDUITests.framework */,
+				AAF739C553F19B1376306C2A /* Pods_SearchAEDTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA890DD8252D83E300051B01 = {
+			isa = PBXGroup;
+			children = (
+				FA890DE3252D83E300051B01 /* SearchAED */,
+				FA890DFA252D83E600051B01 /* SearchAEDTests */,
+				FA890E05252D83E600051B01 /* SearchAEDUITests */,
+				FA890DE2252D83E300051B01 /* Products */,
+				6F94EC5D3AE93EF675B3442E /* Pods */,
+				E58330DDCBE4063F17ED9EF4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA890DE2252D83E300051B01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA890DE1252D83E300051B01 /* SearchAED.app */,
+				FA890DF7252D83E600051B01 /* SearchAEDTests.xctest */,
+				FA890E02252D83E600051B01 /* SearchAEDUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA890DE3252D83E300051B01 /* SearchAED */ = {
+			isa = PBXGroup;
+			children = (
+				FA890DE4252D83E300051B01 /* AppDelegate.swift */,
+				FA890DE6252D83E300051B01 /* SceneDelegate.swift */,
+				FA890E17252D840200051B01 /* APIDefine.swift */,
+				FA890DE8252D83E300051B01 /* ViewController.swift */,
+				FA890DEA252D83E300051B01 /* Main.storyboard */,
+				FA890DED252D83E600051B01 /* Assets.xcassets */,
+				FA890DEF252D83E600051B01 /* LaunchScreen.storyboard */,
+				FA890DF2252D83E600051B01 /* Info.plist */,
+			);
+			path = SearchAED;
+			sourceTree = "<group>";
+		};
+		FA890DFA252D83E600051B01 /* SearchAEDTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA890DFB252D83E600051B01 /* SearchAEDTests.swift */,
+				FA890DFD252D83E600051B01 /* Info.plist */,
+			);
+			path = SearchAEDTests;
+			sourceTree = "<group>";
+		};
+		FA890E05252D83E600051B01 /* SearchAEDUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA890E06252D83E600051B01 /* SearchAEDUITests.swift */,
+				FA890E08252D83E600051B01 /* Info.plist */,
+			);
+			path = SearchAEDUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA890DE0252D83E300051B01 /* SearchAED */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA890E0B252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAED" */;
+			buildPhases = (
+				0CA68CAA3BB1F6A7168735E4 /* [CP] Check Pods Manifest.lock */,
+				FA890DDD252D83E300051B01 /* Sources */,
+				FA890DDE252D83E300051B01 /* Frameworks */,
+				FA890DDF252D83E300051B01 /* Resources */,
+				766B1E16371A9686A75EF378 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SearchAED;
+			productName = SearchAED;
+			productReference = FA890DE1252D83E300051B01 /* SearchAED.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA890DF6252D83E600051B01 /* SearchAEDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA890E0E252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAEDTests" */;
+			buildPhases = (
+				07FEEBB9B7848A834DB1AEC6 /* [CP] Check Pods Manifest.lock */,
+				FA890DF3252D83E600051B01 /* Sources */,
+				FA890DF4252D83E600051B01 /* Frameworks */,
+				FA890DF5252D83E600051B01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA890DF9252D83E600051B01 /* PBXTargetDependency */,
+			);
+			name = SearchAEDTests;
+			productName = SearchAEDTests;
+			productReference = FA890DF7252D83E600051B01 /* SearchAEDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA890E01252D83E600051B01 /* SearchAEDUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA890E11252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAEDUITests" */;
+			buildPhases = (
+				4C7F97CEEDB69375FC59DD97 /* [CP] Check Pods Manifest.lock */,
+				FA890DFE252D83E600051B01 /* Sources */,
+				FA890DFF252D83E600051B01 /* Frameworks */,
+				FA890E00252D83E600051B01 /* Resources */,
+				F156043FA14A938B2A22CC64 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA890E04252D83E600051B01 /* PBXTargetDependency */,
+			);
+			name = SearchAEDUITests;
+			productName = SearchAEDUITests;
+			productReference = FA890E02252D83E600051B01 /* SearchAEDUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA890DD9252D83E300051B01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					FA890DE0252D83E300051B01 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					FA890DF6252D83E600051B01 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = FA890DE0252D83E300051B01;
+					};
+					FA890E01252D83E600051B01 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = FA890DE0252D83E300051B01;
+					};
+				};
+			};
+			buildConfigurationList = FA890DDC252D83E300051B01 /* Build configuration list for PBXProject "SearchAED" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA890DD8252D83E300051B01;
+			productRefGroup = FA890DE2252D83E300051B01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA890DE0252D83E300051B01 /* SearchAED */,
+				FA890DF6252D83E600051B01 /* SearchAEDTests */,
+				FA890E01252D83E600051B01 /* SearchAEDUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA890DDF252D83E300051B01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA890DF1252D83E600051B01 /* LaunchScreen.storyboard in Resources */,
+				FA890DEE252D83E600051B01 /* Assets.xcassets in Resources */,
+				FA890DEC252D83E300051B01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890DF5252D83E600051B01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890E00252D83E600051B01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07FEEBB9B7848A834DB1AEC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SearchAEDTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0CA68CAA3BB1F6A7168735E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SearchAED-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C7F97CEEDB69375FC59DD97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SearchAED-SearchAEDUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		766B1E16371A9686A75EF378 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchAED/Pods-SearchAED-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchAED/Pods-SearchAED-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SearchAED/Pods-SearchAED-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F156043FA14A938B2A22CC64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA890DDD252D83E300051B01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */,
+				FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */,
+				FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */,
+				FA890E18252D840200051B01 /* APIDefine.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890DF3252D83E600051B01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA890DFC252D83E600051B01 /* SearchAEDTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA890DFE252D83E600051B01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA890E07252D83E600051B01 /* SearchAEDUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA890DF9252D83E600051B01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA890DE0252D83E300051B01 /* SearchAED */;
+			targetProxy = FA890DF8252D83E600051B01 /* PBXContainerItemProxy */;
+		};
+		FA890E04252D83E600051B01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA890DE0252D83E300051B01 /* SearchAED */;
+			targetProxy = FA890E03252D83E600051B01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA890DEA252D83E300051B01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA890DEB252D83E300051B01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA890DEF252D83E600051B01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA890DF0252D83E600051B01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA890E09252D83E600051B01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA890E0A252D83E600051B01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA890E0C252D83E600051B01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4943796CD72D63D98FD1743D /* Pods-SearchAED.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAED/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAED;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA890E0D252D83E600051B01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C0C304DBDCB25FE4D944AFF /* Pods-SearchAED.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAED/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAED;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FA890E0F252D83E600051B01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4019CAE4877124FF18C1C3F /* Pods-SearchAEDTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAEDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAEDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SearchAED.app/SearchAED";
+			};
+			name = Debug;
+		};
+		FA890E10252D83E600051B01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0550F5DA8E16CD93912CBA64 /* Pods-SearchAEDTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAEDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAEDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SearchAED.app/SearchAED";
+			};
+			name = Release;
+		};
+		FA890E12252D83E600051B01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30DDF6452673E0A54DB62133 /* Pods-SearchAED-SearchAEDUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAEDUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAEDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SearchAED;
+			};
+			name = Debug;
+		};
+		FA890E13252D83E600051B01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F59F38C9A5E2029CB5167577 /* Pods-SearchAED-SearchAEDUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SearchAEDUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sapere4ude.SearchAEDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SearchAED;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA890DDC252D83E300051B01 /* Build configuration list for PBXProject "SearchAED" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA890E09252D83E600051B01 /* Debug */,
+				FA890E0A252D83E600051B01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA890E0B252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAED" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA890E0C252D83E600051B01 /* Debug */,
+				FA890E0D252D83E600051B01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA890E0E252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAEDTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA890E0F252D83E600051B01 /* Debug */,
+				FA890E10252D83E600051B01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA890E11252D83E600051B01 /* Build configuration list for PBXNativeTarget "SearchAEDUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA890E12252D83E600051B01 /* Debug */,
+				FA890E13252D83E600051B01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA890DD9252D83E300051B01 /* Project object */;
+}
