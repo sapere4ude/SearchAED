@@ -17,6 +17,7 @@
 		FA890DFC252D83E600051B01 /* SearchAEDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DFB252D83E600051B01 /* SearchAEDTests.swift */; };
 		FA890E07252D83E600051B01 /* SearchAEDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E06252D83E600051B01 /* SearchAEDUITests.swift */; };
 		FA890E18252D840200051B01 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E17252D840200051B01 /* APIDefine.swift */; };
+		FA94C731253D2C0700428E29 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94C730253D2C0700428E29 /* Model.swift */; };
 		FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE8252D83E300051B01 /* ViewController.swift */; };
 		FD84058C2E11423112D91E3A /* Pods_SearchAED.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3A0EEF4B48592A9191DF7A /* Pods_SearchAED.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		FA890E06252D83E600051B01 /* SearchAEDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAEDUITests.swift; sourceTree = "<group>"; };
 		FA890E08252D83E600051B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA890E17252D840200051B01 /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
+		FA94C730253D2C0700428E29 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				FA890DED252D83E600051B01 /* Assets.xcassets */,
 				FA890DEF252D83E600051B01 /* LaunchScreen.storyboard */,
 				FA890DF2252D83E600051B01 /* Info.plist */,
+				FA94C730253D2C0700428E29 /* Model.swift */,
 			);
 			path = SearchAED;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA94C731253D2C0700428E29 /* Model.swift in Sources */,
 				FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */,
 				FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */,
 				FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */,

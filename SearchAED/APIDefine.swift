@@ -26,7 +26,7 @@ class APIDefine: NSObject {
     // postman
 //    http://apis.data.go.kr/B552657/AEDInfoInqireService/getEgytAedManageInfoInqire?Servicekey=iUxao104ymKQUz5r%2FtNLfMYhq70wJrTQeK8qN3JpJ22J%2Fi0QLW80iuVsJbtMOcdbspIiv%2FeFic1cE7Xrpx%2F%2Fwg%3D%3D&pageNo=2&numOfRows=100
     
-    static let GET_searchAED_URL_information = searchAED_URL_information + "Servicekey=" + KEY + "&pageNo=2" + "&numOfRows=100"
+    static let GET_searchAED_URL_information = searchAED_URL_information + "Servicekey=" + KEY + "&pageNo=2" + "&numOfRows=3"
     
     static func getSearchInformation() -> String {
         var apiAddr: String = ""
