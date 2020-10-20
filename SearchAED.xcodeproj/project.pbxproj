@@ -18,7 +18,11 @@
 		FA890E07252D83E600051B01 /* SearchAEDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E06252D83E600051B01 /* SearchAEDUITests.swift */; };
 		FA890E18252D840200051B01 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890E17252D840200051B01 /* APIDefine.swift */; };
 		FA94C731253D2C0700428E29 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94C730253D2C0700428E29 /* Model.swift */; };
+		FA94C737253D387E00428E29 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94C735253D387E00428E29 /* ResultTableViewCell.swift */; };
+		FA94C738253D387E00428E29 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA94C736253D387E00428E29 /* ResultTableViewCell.xib */; };
 		FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE8252D83E300051B01 /* ViewController.swift */; };
+		FAB086B0253D99E50073FC14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB086AF253D99E50073FC14 /* DetailViewController.swift */; };
+		FAC1CD99253E91B20098DB70 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC1CD98253E91B20098DB70 /* SearchViewController.swift */; };
 		FD84058C2E11423112D91E3A /* Pods_SearchAED.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3A0EEF4B48592A9191DF7A /* Pods_SearchAED.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +69,10 @@
 		FA890E08252D83E600051B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA890E17252D840200051B01 /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		FA94C730253D2C0700428E29 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		FA94C735253D387E00428E29 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		FA94C736253D387E00428E29 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
+		FAB086AF253D99E50073FC14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FAC1CD98253E91B20098DB70 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,15 +151,19 @@
 		FA890DE3252D83E300051B01 /* SearchAED */ = {
 			isa = PBXGroup;
 			children = (
+				FA890DEA252D83E300051B01 /* Main.storyboard */,
+				FAB086AF253D99E50073FC14 /* DetailViewController.swift */,
+				FA890DE8252D83E300051B01 /* ViewController.swift */,
 				FA890DE4252D83E300051B01 /* AppDelegate.swift */,
 				FA890DE6252D83E300051B01 /* SceneDelegate.swift */,
 				FA890E17252D840200051B01 /* APIDefine.swift */,
-				FA890DE8252D83E300051B01 /* ViewController.swift */,
-				FA890DEA252D83E300051B01 /* Main.storyboard */,
 				FA890DED252D83E600051B01 /* Assets.xcassets */,
 				FA890DEF252D83E600051B01 /* LaunchScreen.storyboard */,
 				FA890DF2252D83E600051B01 /* Info.plist */,
 				FA94C730253D2C0700428E29 /* Model.swift */,
+				FA94C735253D387E00428E29 /* ResultTableViewCell.swift */,
+				FA94C736253D387E00428E29 /* ResultTableViewCell.xib */,
+				FAC1CD98253E91B20098DB70 /* SearchViewController.swift */,
 			);
 			path = SearchAED;
 			sourceTree = "<group>";
@@ -284,6 +296,7 @@
 			files = (
 				FA890DF1252D83E600051B01 /* LaunchScreen.storyboard in Resources */,
 				FA890DEE252D83E600051B01 /* Assets.xcassets in Resources */,
+				FA94C738253D387E00428E29 /* ResultTableViewCell.xib in Resources */,
 				FA890DEC252D83E300051B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,9 +427,12 @@
 			files = (
 				FA94C731253D2C0700428E29 /* Model.swift in Sources */,
 				FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */,
+				FAC1CD99253E91B20098DB70 /* SearchViewController.swift in Sources */,
 				FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */,
 				FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */,
+				FA94C737253D387E00428E29 /* ResultTableViewCell.swift in Sources */,
 				FA890E18252D840200051B01 /* APIDefine.swift in Sources */,
+				FAB086B0253D99E50073FC14 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,16 +1,19 @@
 PODS:
   - Alamofire (5.2.2)
+  - NMapsMap (3.10.0)
   - SwiftyJSON (4.3.0)
   - SwiftyXMLParser (5.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - NMapsMap
   - SwiftyJSON (~> 4.0)
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - NMapsMap
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -24,9 +27,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  NMapsMap: 17caab4af9a3fc5c25b79858de18bdeab1eaff87
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyXMLParser: c39a7854b7d32e447e19d0fabdd98696fe26f03a
 
-PODFILE CHECKSUM: 075d594cb071e2e0666137e2dafcd9ca803cc750
+PODFILE CHECKSUM: 0e744667574c9a55845dbc9dc05b654ed55ca45c
 
 COCOAPODS: 1.9.3

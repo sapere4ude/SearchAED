@@ -10,6 +10,7 @@ target 'SearchAED' do
   pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'NMapsMap'
 
   target 'SearchAEDTests' do
     inherit! :search_paths

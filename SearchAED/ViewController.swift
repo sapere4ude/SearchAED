@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import NMapsMap
 
 class ViewController: UIViewController {
-    @IBOutlet weak var dddddd: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     // XML 파싱할때 사용
     var parser = XMLParser()
@@ -22,14 +23,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url: String = APIDefine.GET_searchAED_URL_information
+//        네이버 지도 불러오기
+//        let nmapFView = NMFMapView(frame: view.frame)
+//        view.addSubview(nmapFView)
         
+        // XML Parsing
+//        let url: String = APIDefine.GET_searchAED_URL_information
+        let url: String = APIDefine.GET_searchAED_URL_FullData
         let urlToSend: NSURL = NSURL(string: url)!
-        
-        // Parse the XML
         parser = XMLParser(contentsOf: urlToSend as URL)!
         parser.delegate = self
-        
         let success: Bool = parser.parse()
         
         if success {
@@ -39,11 +42,71 @@ class ViewController: UIViewController {
         else {
             print("parse failure!")
         }
+        
+        // Cell 연결
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
+        
+        // View 색상 조절
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AEDItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
+//        cell.orgLabel?.text = getAED_Result.org
+//        cell.addressLabel?.text = getAED_Result.buildAddress
+        
+        cell.orgLabel?.text = AEDItems[indexPath.row]["org"]
+        cell.orgLabel.adjustsFontSizeToFitWidth = true
+        cell.addressLabel?.text = AEDItems[indexPath.row]["buildAddress"]
+        cell.addressLabel.adjustsFontSizeToFitWidth = true
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        vc.modalTransitionStyle = .coverVertical
+        
+        // 정보 넘겨주기
+        vc.getAddress = AEDItems[indexPath.row]["buildAddress"]!
+        vc.getBuildPlace = AEDItems[indexPath.row]["buildPlace"]!
+        vc.getClerkTel = AEDItems[indexPath.row]["clerkTel"]!
+        vc.getManager = AEDItems[indexPath.row]["manager"]!
+        
+        // 지도 관련
+        vc.getLon = AEDItems[indexPath.row]["wgs84Lon"]!
+        vc.getLat = AEDItems[indexPath.row]["wgs84Lat"]!
+        
+        print("\(vc.getLon)")
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        return headerView
+    }
+    
     
 }
 
@@ -121,7 +184,7 @@ extension ViewController: XMLParserDelegate {
         case "zipcode2":
             getAED_Result.zipcode2 = string
         default:
-            string
+            print("error")
         }
     }
     
