@@ -11,6 +11,7 @@ target 'SearchAED' do
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'NMapsMap'
+  pod 'NVActivityIndicatorView'
 
   target 'SearchAEDTests' do
     inherit! :search_paths

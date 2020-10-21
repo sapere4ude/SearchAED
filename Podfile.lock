@@ -1,12 +1,16 @@
 PODS:
   - Alamofire (5.2.2)
   - NMapsMap (3.10.0)
+  - NVActivityIndicatorView (5.0.1):
+    - NVActivityIndicatorView/Base (= 5.0.1)
+  - NVActivityIndicatorView/Base (5.0.1)
   - SwiftyJSON (4.3.0)
   - SwiftyXMLParser (5.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - NMapsMap
+  - NVActivityIndicatorView
   - SwiftyJSON (~> 4.0)
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
 
@@ -14,6 +18,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - NMapsMap
+    - NVActivityIndicatorView
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -28,9 +33,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   NMapsMap: 17caab4af9a3fc5c25b79858de18bdeab1eaff87
+  NVActivityIndicatorView: 738e843cb8924e9e4fc3e559d0728031624bf860
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   SwiftyXMLParser: c39a7854b7d32e447e19d0fabdd98696fe26f03a
 
-PODFILE CHECKSUM: 0e744667574c9a55845dbc9dc05b654ed55ca45c
+PODFILE CHECKSUM: a005b2c7ed82595494a10d5a58fd899ce805bf64
 
 COCOAPODS: 1.9.3

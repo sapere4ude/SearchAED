@@ -11,6 +11,8 @@ import NMapsMap
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
+    private let location: [String] = ["서울","경기","인천","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","강원도","제주"]
+    
     // XML 파싱할때 사용
     var parser = XMLParser()
     var currentElement:String = ""
@@ -28,7 +30,6 @@ class ViewController: UIViewController {
 //        view.addSubview(nmapFView)
         
         // XML Parsing
-//        let url: String = APIDefine.GET_searchAED_URL_information
         let url: String = APIDefine.GET_searchAED_URL_FullData
         let urlToSend: NSURL = NSURL(string: url)!
         parser = XMLParser(contentsOf: urlToSend as URL)!
@@ -102,8 +103,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 150
     }
     
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return location.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return location[section]
+//    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        
         return headerView
     }
     
