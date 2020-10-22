@@ -14,8 +14,16 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    var queryText: String?  // 받아오는 검색어
+
+    // API를 통해 받아온 결과를 저장함
+    var items = [String : String]()
+    var AEDItems =  [[String : String]]()
+    
+    
     // XML 파싱할때 사용
-    var parser = XMLParser()
+    var strXMLData: String? = "" // xml데이터를 저장
     var currentElement:String = ""
     
     private let noResultLabel: UILabel = {
@@ -38,9 +46,9 @@ class SearchViewController: UIViewController {
     var searchText:String = ""
     
     // XML 정보 불러오기
-    var items = [String : String]()
-    var AEDItems =  [[String : String]]()
-    var getAED_Result = AED_Result()
+//    var items = [String : String]()
+//    var AEDItems =  [[String : String]]()
+//    var getAED_Result = AED_Result()
     
     
     let indicator = NVActivityIndicatorView(frame: CGRect(x: UIScreen.main.bounds.width/2 - 20, y: UIScreen.main.bounds.height/2, width: 50, height: 50),
@@ -53,25 +61,79 @@ class SearchViewController: UIViewController {
         initUI()
         
         // XML Parsing
-        let url: String = APIDefine.GET_searchAED_URL_FullData
-        let urlToSend: NSURL = NSURL(string: url)!
-        parser = XMLParser(contentsOf: urlToSend as URL)!
-        parser.delegate = self
-        let success: Bool = parser.parse()
-        
-        if success {
-            print("parse success!")
-            print(AEDItems)
-        }
-        else {
-            print("parse failure!")
-        }
+//        let url: String = APIDefine.GET_searchAED_URL_FullData
+//        let urlToSend: NSURL = NSURL(string: url)!
+//        parser = XMLParser(contentsOf: urlToSend as URL)!
+//        parser.delegate = self
+//        let success: Bool = parser.parse()
+//
+//        if success {
+//            print("parse success!")
+//            print(AEDItems)
+//        }
+//        else {
+//            print("parse failure!")
+//        }
         
         
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
     }
+    
+    
+    
+    // 새롭게 추가하고 있는 것 2020.10.22
+    func searchAED() {
+        var items = [String : String]()
+        var AEDItems =  [[String : String]]()
+        var getAED_Result = AED_Result()
+        
+        let url: String = APIDefine.GET_searchAED_URL_FullData
+        let urlToSend: NSURL = NSURL(string: url)!
+        
+        var request = URLRequest(url: urlToSend as URL)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            // 에러가 있으면 리턴
+            guard error == nil else {
+                print(error)
+                return
+            }
+            
+            // 데이터가 비었으면 출력 후 리턴
+            guard let data = data else {
+                print("Data is empty")
+                return
+            }
+            
+            // 데이터 초기화
+            getAED_Result.buildAddress = ""
+            getAED_Result.buildPlace = ""
+            getAED_Result.clerkTel = ""
+            getAED_Result.manager = ""
+            getAED_Result.managerTel = ""
+            getAED_Result.mfg = ""
+            getAED_Result.model = ""
+            getAED_Result.org = ""
+            getAED_Result.wgs84Lat = ""
+            getAED_Result.wgs84Lon = ""
+            getAED_Result.zipcode1 = ""
+            getAED_Result.zipcode2 = ""
+            
+            // Parse the XML
+            let parser = XMLParser(data: Data(data))
+            parser.delegate = self
+            let success:Bool = parser.parse()
+            if success {
+                print(self.strXMLData)
+            } else {
+                print("parse failure!")
+            }
+        }
+        task.resume()
+    }
+    
     
     func initUI() {
         searchBar.placeholder = "지역을 입력하세요"
@@ -170,14 +232,14 @@ extension SearchViewController: UISearchBarDelegate {
             
             // 여기에 검색 텍스트가 있을 경우 보여주는 것 코드 만들기
             
-            if self.AEDItems.contains(["buildAddress":self.searchText]) {
-                switch self.searchText {
-                case "서울":
-                    //AEDItems.append()
-                default:
-                    <#code#>
-                }
-            }
+//            if self.AEDItems.contains(["buildAddress":self.searchText]) {
+//                switch self.searchText {
+//                case "":
+//                    //AEDItems.append()
+//                default:
+//
+//                }
+//            }
             
             DispatchQueue.main.async {
                 self.indicator.stopAnimating()
@@ -220,20 +282,11 @@ extension SearchViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         currentElement = elementName
-        if elementName == "item" {
-            items = [String : String]()
-            getAED_Result.buildPlace = ""
-            getAED_Result.buildAddress = ""
-            getAED_Result.clerkTel = ""
-            getAED_Result.manager = ""
-            getAED_Result.managerTel = ""
-            getAED_Result.mfg = ""
-            getAED_Result.model = ""
-            getAED_Result.org = ""
-            getAED_Result.wgs84Lat = ""
-            getAED_Result.wgs84Lon = ""
-            getAED_Result.zipcode1 = ""
-            getAED_Result.zipcode2 = ""
+        if elementName == "buildAddress" || elementName == "buildPlace" || elementName == "clerkTel" || elementName == "manager" || elementName == "managerTel" || elementName == "mfg" || elementName == "model" || elementName == "org" || elementName == "wgs84Lat" || elementName == "wgs84Lon" || elementName == "zipcode1" || elementName == "zipcode2" {
+            currentElement = ""
+            if elementName == "buildAddress" {
+                items = AED_Result()
+            }
         }
         
     }

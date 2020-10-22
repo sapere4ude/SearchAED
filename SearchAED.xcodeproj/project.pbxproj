@@ -154,6 +154,7 @@
 				FA890DEA252D83E300051B01 /* Main.storyboard */,
 				FAB086AF253D99E50073FC14 /* DetailViewController.swift */,
 				FA890DE8252D83E300051B01 /* ViewController.swift */,
+				FAC1CD98253E91B20098DB70 /* SearchViewController.swift */,
 				FA890DE4252D83E300051B01 /* AppDelegate.swift */,
 				FA890DE6252D83E300051B01 /* SceneDelegate.swift */,
 				FA890E17252D840200051B01 /* APIDefine.swift */,
@@ -163,7 +164,6 @@
 				FA94C730253D2C0700428E29 /* Model.swift */,
 				FA94C735253D387E00428E29 /* ResultTableViewCell.swift */,
 				FA94C736253D387E00428E29 /* ResultTableViewCell.xib */,
-				FAC1CD98253E91B20098DB70 /* SearchViewController.swift */,
 			);
 			path = SearchAED;
 			sourceTree = "<group>";
