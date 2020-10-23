@@ -14,17 +14,23 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var queryText: String?  // 받아오는 검색어
 
     // API를 통해 받아온 결과를 저장함
-    var items = [String : String]()
-    var AEDItems =  [[String : String]]()
+//    var items = [String : String]()
+//    var AEDItems =  [[String : String]]()
+    
+    var AEDItems:[AED_Result] = []
+    var queryText: String?  // 받아오는 검색어
     
     
     // XML 파싱할때 사용
     var strXMLData: String? = "" // xml데이터를 저장
     var currentElement:String = ""
+    var item: AED_Result? = nil
+    
+    // 전역변수로 활용
+    var qqq: AED_Result? = nil
+    var qqqItems:[AED_Result] = []
     
     private let noResultLabel: UILabel = {
         let label = UILabel()
@@ -45,11 +51,6 @@ class SearchViewController: UIViewController {
     
     var searchText:String = ""
     
-    // XML 정보 불러오기
-//    var items = [String : String]()
-//    var AEDItems =  [[String : String]]()
-//    var getAED_Result = AED_Result()
-    
     
     let indicator = NVActivityIndicatorView(frame: CGRect(x: UIScreen.main.bounds.width/2 - 20, y: UIScreen.main.bounds.height/2, width: 50, height: 50),
                                             type: .ballBeat,
@@ -59,45 +60,31 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
-        
-        // XML Parsing
-//        let url: String = APIDefine.GET_searchAED_URL_FullData
-//        let urlToSend: NSURL = NSURL(string: url)!
-//        parser = XMLParser(contentsOf: urlToSend as URL)!
-//        parser.delegate = self
-//        let success: Bool = parser.parse()
-//
-//        if success {
-//            print("parse success!")
-//            print(AEDItems)
-//        }
-//        else {
-//            print("parse failure!")
-//        }
-        
+//        searchAED()
         
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
     }
-    
-    
+
     
     // 새롭게 추가하고 있는 것 2020.10.22
-    func searchAED() {
+    func searchAED(search_text: String) {
+        
         var items = [String : String]()
         var AEDItems =  [[String : String]]()
         var getAED_Result = AED_Result()
         
-        let url: String = APIDefine.GET_searchAED_URL_FullData
+        let url: String = APIDefine.GET_searchAED_URL_FullData + "&Q1=" + search_text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        print("\(url)")
         let urlToSend: NSURL = NSURL(string: url)!
         
-        var request = URLRequest(url: urlToSend as URL)
+        let request = URLRequest(url: urlToSend as URL)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // 에러가 있으면 리턴
             guard error == nil else {
-                print(error)
+                print(error as Any)
                 return
             }
             
@@ -108,25 +95,26 @@ class SearchViewController: UIViewController {
             }
             
             // 데이터 초기화
-            getAED_Result.buildAddress = ""
-            getAED_Result.buildPlace = ""
-            getAED_Result.clerkTel = ""
-            getAED_Result.manager = ""
-            getAED_Result.managerTel = ""
-            getAED_Result.mfg = ""
-            getAED_Result.model = ""
-            getAED_Result.org = ""
-            getAED_Result.wgs84Lat = ""
-            getAED_Result.wgs84Lon = ""
-            getAED_Result.zipcode1 = ""
-            getAED_Result.zipcode2 = ""
+            self.item?.buildAddress = ""
+            self.item?.buildAddress = ""
+            self.item?.buildPlace = ""
+            self.item?.clerkTel = ""
+            self.item?.manager = ""
+            self.item?.managerTel = ""
+            self.item?.mfg = ""
+            self.item?.model = ""
+            self.item?.org = ""
+            self.item?.wgs84Lat = ""
+            self.item?.wgs84Lon = ""
+            self.item?.zipcode1 = ""
+            self.item?.zipcode2 = ""
             
             // Parse the XML
             let parser = XMLParser(data: Data(data))
             parser.delegate = self
             let success:Bool = parser.parse()
             if success {
-                print(self.strXMLData)
+                print(self.strXMLData as Any)
             } else {
                 print("parse failure!")
             }
@@ -161,12 +149,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
-//        cell.orgLabel?.text = getAED_Result.org
-//        cell.addressLabel?.text = getAED_Result.buildAddress
         
-        cell.orgLabel?.text = AEDItems[indexPath.row]["org"]
+        let AEDItem = AEDItems[indexPath.row]
+        
+        cell.orgLabel?.text = AEDItem.org
         cell.orgLabel.adjustsFontSizeToFitWidth = true
-        cell.addressLabel?.text = AEDItems[indexPath.row]["buildAddress"]
+        cell.addressLabel?.text = AEDItem.buildAddress
         cell.addressLabel.adjustsFontSizeToFitWidth = true
         
         return cell
@@ -179,14 +167,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.modalTransitionStyle = .coverVertical
         
         // 정보 넘겨주기
-        vc.getAddress = AEDItems[indexPath.row]["buildAddress"]!
-        vc.getBuildPlace = AEDItems[indexPath.row]["buildPlace"]!
-        vc.getClerkTel = AEDItems[indexPath.row]["clerkTel"]!
-        vc.getManager = AEDItems[indexPath.row]["manager"]!
+        
+        let AEDItem = AEDItems[indexPath.row]
+        
+        vc.getAddress = AEDItem.buildAddress
+        vc.getBuildPlace = AEDItem.buildPlace
+        vc.getClerkTel = AEDItem.clerkTel
+        vc.getManager = AEDItem.manager
         
         // 지도 관련
-        vc.getLon = AEDItems[indexPath.row]["wgs84Lon"]!
-        vc.getLat = AEDItems[indexPath.row]["wgs84Lat"]!
+        vc.getLon = AEDItem.wgs84Lon
+        vc.getLat = AEDItem.wgs84Lat
         
         print("\(vc.getLon)")
         
@@ -196,14 +187,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return location.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return location[section]
-//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
@@ -216,43 +199,43 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
         noResultLabel.isHidden = true
-        guard let text = searchBar.text, !text.replacingOccurrences(of: "", with: "").isEmpty else {
-            noResultLabel.isHidden = true
+        guard let query = searchBar.text, !query.replacingOccurrences(of: "", with: "").isEmpty else {
+            noResultLabel.isHidden = false
             return
         }
         
-        searchText = text   // sendRequst 함수에서 만들어진 값을 전역변수로 넘겨주는 역할
+        //searchText = text   // sendRequst 함수에서 만들어진 값을 전역변수로 넘겨주는 역할
         
         searchBar.resignFirstResponder()
         
         //indicator show
         self.indicator.isHidden = true
-        indicator.startAnimating()
-        DispatchQueue.main.async {
+//        indicator.startAnimating()
+        
+        self.searchAED(search_text: query)
+        
+//        DispatchQueue.main.async {
             
             // 여기에 검색 텍스트가 있을 경우 보여주는 것 코드 만들기
+            print("query->",query)
             
-//            if self.AEDItems.contains(["buildAddress":self.searchText]) {
-//                switch self.searchText {
-//                case "":
-//                    //AEDItems.append()
-//                default:
-//
-//                }
+//            self.searchAED(search_text: query)
+            
+//                self.tableView.reloadData()
 //            }
+        
             
-            DispatchQueue.main.async {
-                self.indicator.stopAnimating()
-                self.indicator.isHidden = true
-            }
-            if self.AEDItems.isEmpty {
-                self.tableView.isHidden = true
-                self.noResultLabel.isHidden = false
-            } else {
-                self.tableView.isHidden = false
-            }
+//            DispatchQueue.main.async {
+//                self.indicator.stopAnimating()
+//                self.indicator.isHidden = true
+//            }
+//            if self.AEDItems.isEmpty {
+//                self.tableView.isHidden = true
+//                self.noResultLabel.isHidden = false
+//            } else {
+//                self.tableView.isHidden = false
+//            }
         }
-    }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text == nil {
@@ -285,7 +268,7 @@ extension SearchViewController: XMLParserDelegate {
         if elementName == "buildAddress" || elementName == "buildPlace" || elementName == "clerkTel" || elementName == "manager" || elementName == "managerTel" || elementName == "mfg" || elementName == "model" || elementName == "org" || elementName == "wgs84Lat" || elementName == "wgs84Lon" || elementName == "zipcode1" || elementName == "zipcode2" {
             currentElement = ""
             if elementName == "buildAddress" {
-                items = AED_Result()
+                item = AED_Result()
             }
         }
         
@@ -294,56 +277,41 @@ extension SearchViewController: XMLParserDelegate {
     // 닫는 태그를 만날때
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        if elementName == "item" {
-            items["buildAddress"] = getAED_Result.buildAddress
-            items["buildPlace"] = getAED_Result.buildPlace
-            items["clerkTel"] = getAED_Result.clerkTel
-            items["manager"] = getAED_Result.manager
-            items["managerTel"] = getAED_Result.managerTel
-            items["mfg"] = getAED_Result.mfg
-            items["model"] = getAED_Result.model
-            items["org"] = getAED_Result.org
-            items["wgs84Lat"] = getAED_Result.wgs84Lat
-            items["wgs84Lon"] = getAED_Result.wgs84Lon
-            items["zipcode1"] = getAED_Result.zipcode1
-            items["zipcode2"] = getAED_Result.zipcode2
-            
-            
-            AEDItems.append(items)
+        if elementName == "buildAddress" {
+            item?.buildAddress = currentElement.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        } else if elementName == "buildPlace" {
+            item?.buildPlace = currentElement
+        } else if elementName == "clerkTel" {
+            item?.clerkTel = currentElement
+        } else if elementName == "manager" {
+            item?.manager = currentElement
+        } else if elementName == "managerTel" {
+            item?.managerTel = currentElement
+        } else if elementName == "mfg" {
+            item?.mfg = currentElement
+        } else if elementName == "model" {
+            item?.model = currentElement
+        } else if elementName == "org" {
+            item?.org = currentElement
+        } else if elementName == "wgs84Lat" {
+            item?.wgs84Lat = currentElement
+        } else if elementName == "wgs84Lon" {
+            item?.wgs84Lon = currentElement
+        } else if elementName == "zipcode1" {
+            item?.zipcode1 = currentElement
+        } else if elementName == "zipcode2" {
+            item?.zipcode2 = currentElement
+            AEDItems.append(self.item!)
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
         }
     }
     
     // 현재 태그에 담긴 string 출력
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        switch currentElement {
-        case "buildAddress":
-            getAED_Result.buildAddress = string
-        case "buildPlace":
-            getAED_Result.buildPlace = string
-        case "clerkTel":
-            getAED_Result.clerkTel = string
-        case "manager":
-            getAED_Result.manager = string
-        case "managerTel":
-            getAED_Result.managerTel = string
-        case "mfg":
-            getAED_Result.mfg = string
-        case "model":
-            getAED_Result.model = string
-        case "org":
-            getAED_Result.org = string
-        case "wgs84Lat":
-            getAED_Result.wgs84Lat = string
-        case "wgs84Lon":
-            getAED_Result.wgs84Lon = string
-        case "zipcode1":
-            getAED_Result.zipcode1 = string
-        case "zipcode2":
-            getAED_Result.zipcode2 = string
-        default:
-            print("error")
-        }
+       currentElement += string
+       
     }
     
     private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {
