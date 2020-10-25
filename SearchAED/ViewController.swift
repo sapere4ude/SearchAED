@@ -33,15 +33,15 @@ class ViewController: UIViewController {
         let url: String = APIDefine.GET_searchAED_URL_FullData
         let urlToSend: NSURL = NSURL(string: url)!
         parser = XMLParser(contentsOf: urlToSend as URL)!
-        parser.delegate = self
-        let success: Bool = parser.parse()
-        
-        if success {
-            print("parse success!")
-            print(AEDItems)
-        }
-        else {
-            print("parse failure!")
+                parser.delegate = self
+                let success: Bool = parser.parse()
+                
+                if success {
+                    print("parse success!")
+                    print(AEDItems)
+                }
+                else {
+                    print("parse failure!")
         }
         
         // Cell 연결
@@ -66,6 +66,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
 //        cell.orgLabel?.text = getAED_Result.org
 //        cell.addressLabel?.text = getAED_Result.buildAddress
