@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     var items = [String : String]()
     var AEDItems =  [[String : String]]()
     
-    lazy var result_AEDItems = [[String : String]]()
+    var result_AEDItems = [[String : String]]()
     
     var getAED_Result = AED_Result()
     
@@ -45,6 +45,7 @@ class SearchViewController: UIViewController {
         return label
     }()
     
+    
     //MARK:paging
     let queryOnceCnt:Int = 10
     var currentPage:Int = 0
@@ -67,24 +68,35 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-    }
-
-    
-    // 새롭게 추가하고 있는 것 2020.10.22
-    func searchAED(search_text: String) {
         
-//        var items = [String : String]()
-//        var AEDItems =  [[String : String]]()
-//        var getAED_Result = AED_Result()
+        // XML Parsing
+//        let url: String = APIDefine.GET_searchAED_URL_information
+//        let urlToSend: NSURL = NSURL(string: url)!
+//        parser = XMLParser(contentsOf: urlToSend as URL)!
+//                parser.delegate = self
+//                let success: Bool = parser.parse()
+//
+//                if success {
+//                    print("parse success!")
+//                    print(AEDItems)
+//                }
+//                else {
+//                    print("parse failure!")
+//        }
+    }
+    
+    
+    func searchAED(search_text: String, completionHandler:@escaping (String) -> (), failureHandler:@escaping (String) ->() ) {
         
         let url: String = APIDefine.GET_searchAED_URL_information + "&Q1=" + search_text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         print("\(url)")
+        
         let urlToSend: NSURL = NSURL(string: url)!
         
         let request = URLRequest(url: urlToSend as URL)
         
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // 에러가 있으면 리턴
             guard error == nil else {
                 print(error as Any)
@@ -113,20 +125,22 @@ class SearchViewController: UIViewController {
             self.item?.zipcode2 = ""
             
             // Parse the XML
-            
-            // 지금 문제점! XML 파싱 데이터가 전부 넘어가지 않음
-            parser = XMLParser(data: Data(data))
+            let parser = XMLParser(data: Data(data))
             parser.delegate = self
+            
             let success:Bool = parser.parse()
+            
             if success {
                 print("search에서 확인",self.strXMLData as Any)
-                print(AEDItems)
-                print("총 개수:",AEDItems.count)
-                self.result_AEDItems += AEDItems
+                print(self.AEDItems)
+                print("총 개수:",self.AEDItems.count)
+                self.result_AEDItems += self.AEDItems
                 print("검색결과->", self.result_AEDItems)
-                tableView.reloadData()
+                completionHandler("성공")
+//                self.tableView.reloadData()
             } else {
                 print("parse failure!")
+                failureHandler("실패")
             }
         }
         task.resume()
@@ -162,17 +176,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         print(#function)
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
         
-//        let AEDItem = AEDItems[indexPath.row]
+
+        //        let AEDItem = AEDItems[indexPath.row]
         
         //cell.orgLabel?.text = AEDItem.org
-        cell.orgLabel?.text = result_AEDItems[indexPath.row]["org"]
-        print("값이 들어오는지->",result_AEDItems)
-//        cell.orgLabel?.text = AEDItems[indexPath.row]["org"]
+        cell.orgLabel?.text = self.result_AEDItems[indexPath.row]["org"]
+//        print("값이 들어오는지->",self.result_AEDItems)
+//                cell.orgLabel?.text = AEDItems[indexPath.row]["org"]
         cell.orgLabel.adjustsFontSizeToFitWidth = true
         //cell.addressLabel?.text = AEDItem.buildAddress
-        cell.addressLabel?.text = AEDItems[indexPath.row]["buildAddress"]
-
+        cell.addressLabel?.text = self.AEDItems[indexPath.row]["buildAddress"]
+        
         cell.addressLabel.adjustsFontSizeToFitWidth = true
+        
         
         return cell
     }
@@ -226,30 +242,32 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
+        
         noResultLabel.isHidden = true
         guard let query = searchBar.text, !query.replacingOccurrences(of: "", with: "").isEmpty else {
-            noResultLabel.isHidden = false
+            noResultLabel.isHidden = true
+            tableView.isHidden = true // check
             return
         }
         
-        //searchText = text   // sendRequst 함수에서 만들어진 값을 전역변수로 넘겨주는 역할
-        
         searchBar.resignFirstResponder()
         
-        //indicator show
-//        self.indicator.isHidden = true
-//        indicator.startAnimating()
-        
-//        self.searchAED(search_text: query)
+        // indicator show
+        self.indicator.isHidden = true
+        indicator.startAnimating()
         
         DispatchQueue.main.async {
             
             // 여기에 검색 텍스트가 있을 경우 보여주는 것 코드 만들기
+            
             print("검색데이터->",query)
             
-            self.searchAED(search_text: query)
+            self.searchAED(search_text: query,completionHandler: { success in
+              print("success : \(success)")
+            },failureHandler: { error in
+                print("error: \(error)")
+            })
             
-//            print("검색결과->", self.result_AEDItems)
             self.tableView.reloadData()
             
             DispatchQueue.main.async {
@@ -257,8 +275,8 @@ extension SearchViewController: UISearchBarDelegate {
                 self.indicator.isHidden = true
             }
             if self.result_AEDItems.isEmpty {
-                self.tableView.isHidden = true
-                self.noResultLabel.isHidden = false
+                self.tableView.isHidden = false
+                self.noResultLabel.isHidden = true
             } else {
                 self.tableView.isHidden = false
             }
@@ -365,8 +383,11 @@ extension SearchViewController: XMLParserDelegate {
             items["zipcode1"] = getAED_Result.zipcode1
             items["zipcode2"] = getAED_Result.zipcode2
             
-            
             AEDItems.append(items)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         
     }
@@ -400,7 +421,7 @@ extension SearchViewController: XMLParserDelegate {
         case "zipcode2":
             getAED_Result.zipcode2 = string
         default:
-            print("error")
+            print("없는 값")
         }
     }
     
