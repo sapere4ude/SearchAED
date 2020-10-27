@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     var items = [String : String]()
     var AEDItems =  [[String : String]]()
     
-    var result_AEDItems = [[String : String]]()
+    lazy var result_AEDItems = [[String : String]]()
     
     var getAED_Result = AED_Result()
     
@@ -69,22 +69,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
-        // XML Parsing
-//        let url: String = APIDefine.GET_searchAED_URL_information
-//        let urlToSend: NSURL = NSURL(string: url)!
-//        parser = XMLParser(contentsOf: urlToSend as URL)!
-//                parser.delegate = self
-//                let success: Bool = parser.parse()
-//
-//                if success {
-//                    print("parse success!")
-//                    print(AEDItems)
-//                }
-//                else {
-//                    print("parse failure!")
-//        }
     }
-    
     
     func searchAED(search_text: String, completionHandler:@escaping (String) -> (), failureHandler:@escaping (String) ->() ) {
         
@@ -137,7 +122,7 @@ class SearchViewController: UIViewController {
                 self.result_AEDItems += self.AEDItems
                 print("검색결과->", self.result_AEDItems)
                 completionHandler("성공")
-//                self.tableView.reloadData()
+                
             } else {
                 print("parse failure!")
                 failureHandler("실패")
@@ -172,23 +157,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return result_AEDItems.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
         
-
-        //        let AEDItem = AEDItems[indexPath.row]
-        
-        //cell.orgLabel?.text = AEDItem.org
         cell.orgLabel?.text = self.result_AEDItems[indexPath.row]["org"]
-//        print("값이 들어오는지->",self.result_AEDItems)
-//                cell.orgLabel?.text = AEDItems[indexPath.row]["org"]
         cell.orgLabel.adjustsFontSizeToFitWidth = true
-        //cell.addressLabel?.text = AEDItem.buildAddress
-        cell.addressLabel?.text = self.AEDItems[indexPath.row]["buildAddress"]
         
+        cell.addressLabel?.text = self.result_AEDItems[indexPath.row]["buildAddress"]
         cell.addressLabel.adjustsFontSizeToFitWidth = true
-        
         
         return cell
     }
@@ -246,7 +224,7 @@ extension SearchViewController: UISearchBarDelegate {
         noResultLabel.isHidden = true
         guard let query = searchBar.text, !query.replacingOccurrences(of: "", with: "").isEmpty else {
             noResultLabel.isHidden = true
-            tableView.isHidden = true // check
+            //tableView.isHidden = true // check
             return
         }
         
@@ -257,9 +235,11 @@ extension SearchViewController: UISearchBarDelegate {
         indicator.startAnimating()
         
         DispatchQueue.main.async {
-            
-            // 여기에 검색 텍스트가 있을 경우 보여주는 것 코드 만들기
-            
+            for i in 0..<3 {
+                usleep(1 * 1000 * 1000)
+                print("\(i+1)")
+            }
+                        
             print("검색데이터->",query)
             
             self.searchAED(search_text: query,completionHandler: { success in
@@ -268,7 +248,9 @@ extension SearchViewController: UISearchBarDelegate {
                 print("error: \(error)")
             })
             
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
+//            self.tableView.contentOffset = .zero
+//            self.AEDItems.removeAll()
             
             DispatchQueue.main.async {
                 self.indicator.stopAnimating()
@@ -290,20 +272,20 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     // 스크롤했을때 새로운 페이지 보여주는 방법
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollView:\(scrollView.contentOffset.y)")
-        let offset = scrollView.contentOffset
-        let bounds = scrollView.bounds
-        let size = scrollView.contentSize
-        let inset = scrollView.contentInset
-        let y = offset.y + bounds.size.height - inset.bottom
-        let h = size.height
-        
-        if y + self.callNextPageBeforeOffset >= h {
-            if !self.isQuery && !self.reachEnd {
-            }
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("scrollView:\(scrollView.contentOffset.y)")
+//        let offset = scrollView.contentOffset
+//        let bounds = scrollView.bounds
+//        let size = scrollView.contentSize
+//        let inset = scrollView.contentInset
+//        let y = offset.y + bounds.size.height - inset.bottom
+//        let h = size.height
+//
+//        if y + self.callNextPageBeforeOffset >= h {
+//            if !self.isQuery && !self.reachEnd {
+//            }
+//        }
+//    }
 }
 
 extension SearchViewController: XMLParserDelegate {
@@ -387,6 +369,7 @@ extension SearchViewController: XMLParserDelegate {
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.tableView.contentOffset = .zero
             }
         }
         
@@ -395,6 +378,7 @@ extension SearchViewController: XMLParserDelegate {
     // 현재 태그에 담긴 string 출력
     func parser(_ parser: XMLParser, foundCharacters string: String) {
 //       currentElement += string
+        
         switch currentElement {
         case "buildAddress":
             getAED_Result.buildAddress = string
@@ -423,6 +407,9 @@ extension SearchViewController: XMLParserDelegate {
         default:
             print("없는 값")
         }
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
     }
     
     private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {

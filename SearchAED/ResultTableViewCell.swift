@@ -22,4 +22,9 @@ class ResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        orgLabel.text = nil
+        addressLabel.text = nil
+    }
+    
 }
