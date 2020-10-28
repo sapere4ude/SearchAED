@@ -116,12 +116,20 @@ class SearchViewController: UIViewController {
             let success:Bool = parser.parse()
             
             if success {
+                
                 print("search에서 확인",self.strXMLData as Any)
                 print(self.AEDItems)
                 print("총 개수:",self.AEDItems.count)
                 self.result_AEDItems += self.AEDItems
                 print("검색결과->", self.result_AEDItems)
                 completionHandler("성공")
+                
+//                if self.AEDItems.count == 0 {
+//                    self.tableView.isHidden = true
+//                    self.noResultLabel.isHidden = false
+//                }
+                
+                self.AEDItems.removeAll()
                 
             } else {
                 print("parse failure!")
@@ -221,10 +229,13 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
         
+        self.result_AEDItems.removeAll() // result_AEDItems에는 기존의 값이 있기때문에 전부 초기화 시켜주는 작업을 먼저 진행한다!
+        
         noResultLabel.isHidden = true
+        
         guard let query = searchBar.text, !query.replacingOccurrences(of: "", with: "").isEmpty else {
-            noResultLabel.isHidden = true
-            //tableView.isHidden = true // check
+            noResultLabel.isHidden = false
+            tableView.isHidden = true // check
             return
         }
         
@@ -244,24 +255,22 @@ extension SearchViewController: UISearchBarDelegate {
             
             self.searchAED(search_text: query,completionHandler: { success in
               print("success : \(success)")
+                
+                DispatchQueue.main.async {  // 비동기 -> 비동기 안에 indicator를 멈춰줘야함
+                    self.indicator.stopAnimating()
+                    self.indicator.isHidden = true
+                }
+                if self.result_AEDItems.isEmpty {
+                    self.tableView.isHidden = true
+                    self.noResultLabel.isHidden = false
+                } else {
+                    self.tableView.isHidden = false
+                }
+                
             },failureHandler: { error in
+                self.indicator.isHidden = true
                 print("error: \(error)")
             })
-            
-//            self.tableView.reloadData()
-//            self.tableView.contentOffset = .zero
-//            self.AEDItems.removeAll()
-            
-            DispatchQueue.main.async {
-                self.indicator.stopAnimating()
-                self.indicator.isHidden = true
-            }
-            if self.result_AEDItems.isEmpty {
-                self.tableView.isHidden = false
-                self.noResultLabel.isHidden = true
-            } else {
-                self.tableView.isHidden = false
-            }
         }
     }
     
