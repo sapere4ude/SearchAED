@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingViewController: UIViewController {
 
@@ -17,6 +18,8 @@ class SettingViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isUserInteractionEnabled = true
+        
     }
 }
 
@@ -30,6 +33,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.settingLabel.text = menu[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 { // AED 사용법 영상보기일때만 링크타고 넘어가기
+            let url = URL(string: "https://www.youtube.com/watch?v=q7J2T6MFA9g")!
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+        }
     }
     
     

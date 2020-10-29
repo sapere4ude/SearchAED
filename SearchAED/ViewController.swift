@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 
                 if success {
                     print("parse success!")
-                    print(AEDItems)
+                    //print(AEDItems)
                 }
                 else {
                     print("parse failure!")
@@ -66,7 +66,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
+        //print(#function)
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
 //        cell.orgLabel?.text = getAED_Result.org
 //        cell.addressLabel?.text = getAED_Result.buildAddress
@@ -80,7 +80,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+        //print(#function)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         vc.modalTransitionStyle = .coverVertical
@@ -95,7 +95,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getLon = AEDItems[indexPath.row]["wgs84Lon"]!
         vc.getLat = AEDItems[indexPath.row]["wgs84Lat"]!
         
-        print("\(vc.getLon)")
+        //print("\(vc.getLon)")
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -195,7 +195,7 @@ extension ViewController: XMLParserDelegate {
         case "zipcode2":
             getAED_Result.zipcode2 = string
         default:
-            print("error")
+            break
         }
     }
     

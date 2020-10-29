@@ -74,7 +74,7 @@ class SearchViewController: UIViewController {
         
         let url: String = APIDefine.GET_searchAED_URL_information + "&Q1=" + search_text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        print("\(url)")
+        //print("\(url)")
         
         let urlToSend: NSURL = NSURL(string: url)!
         
@@ -116,11 +116,11 @@ class SearchViewController: UIViewController {
             
             if success {
                 
-                print("search에서 확인",self.strXMLData as Any)
-                print(self.AEDItems)
-                print("총 개수:",self.AEDItems.count)
+                //print("search에서 확인",self.strXMLData as Any)
+                //print(self.AEDItems)
+                //print("총 개수:",self.AEDItems.count)
                 self.result_AEDItems += self.AEDItems
-                print("검색결과->", self.result_AEDItems)
+                //print("검색결과->", self.result_AEDItems)
                 completionHandler("성공")
                 
                 if self.AEDItems.count == 0 {
@@ -160,13 +160,13 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
+        //print(#function)
         return result_AEDItems.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
+        //print(#function)
         let cell: ResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
         
         cell.orgLabel?.text = self.result_AEDItems[indexPath.row]["org"]
@@ -179,7 +179,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+        //print(#function)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         vc.modalTransitionStyle = .coverVertical
@@ -195,7 +195,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getLat = self.result_AEDItems[indexPath.row]["wgs84Lat"]!
         
         
-        print("\(vc.getLon)")
+        //print("\(vc.getLon)")
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -213,7 +213,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(#function)
+        //print(#function)
         
         self.result_AEDItems.removeAll() // result_AEDItems에는 기존의 값이 있기때문에 전부 초기화 시켜주는 작업을 먼저 진행한다!
         
@@ -231,7 +231,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.indicator.isHidden = true
         indicator.startAnimating()
                         
-            print("검색데이터->",query)
+            //print("검색데이터->",query)
             
             self.searchAED(search_text: query,completionHandler: { success in
               print("success : \(success)")
@@ -358,7 +358,7 @@ extension SearchViewController: XMLParserDelegate {
         case "zipcode2":
             getAED_Result.zipcode2 = string
         default:
-            print("없는 값")
+            break
         }
     }
     

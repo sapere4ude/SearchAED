@@ -56,7 +56,6 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="QtB-DG-aRv"/>
                                     <constraint firstAttribute="height" constant="759" id="SbO-39-Ll5"/>
                                 </constraints>
                             </tableView>
@@ -177,17 +176,12 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="MEE-qv-s7F"/>
-                                    <constraint firstAttribute="width" constant="414" id="pju-pN-Bho"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-du-wLr">
                                 <rect key="frame" x="0.0" y="154" width="414" height="649"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="649" id="94R-I2-deE"/>
-                                    <constraint firstAttribute="width" constant="414" id="U5o-Mx-84k"/>
-                                </constraints>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y01-He-vaP"/>
