@@ -51,12 +51,14 @@ class DetailViewController: UIViewController {
         param.rotate(to: 90)
         mapView.moveCamera(NMFCameraUpdate(params: param))
         mapView.isIndoorMapEnabled = true
+        mapView.isNightModeEnabled = true // 야간모드
         
         let marker = NMFMarker()
         marker.position = NMGLatLng(lat: Double(getLat)!, lng: Double(getLon)!)
         marker.mapView = mapView
         marker.iconImage = NMFOverlayImage(image: (UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal))!)
         marker.iconTintColor = .systemPink
+        
         
         
         

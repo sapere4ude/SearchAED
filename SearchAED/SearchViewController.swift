@@ -23,7 +23,6 @@ class SearchViewController: UIViewController {
     
     var getAED_Result = AED_Result()
     
-    //var AEDItems:[AED_Result] = []
     var queryText: String?  // 받아오는 검색어
     
     
@@ -124,10 +123,10 @@ class SearchViewController: UIViewController {
                 print("검색결과->", self.result_AEDItems)
                 completionHandler("성공")
                 
-//                if self.AEDItems.count == 0 {
-//                    self.tableView.isHidden = true
-//                    self.noResultLabel.isHidden = false
-//                }
+                if self.AEDItems.count == 0 {
+                    self.tableView.isHidden = true
+                    self.noResultLabel.isHidden = false
+                }
                 
                 self.AEDItems.removeAll()
                 
@@ -186,27 +185,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.modalTransitionStyle = .coverVertical
         
         // 정보 넘겨주기
-        
-        //let AEDItem = AEDItems[indexPath.row]
-        
-//        vc.getAddress = AEDItem.buildAddress
-//        vc.getBuildPlace = AEDItem.buildPlace
-//        vc.getClerkTel = AEDItem.clerkTel
-//        vc.getManager = AEDItem.manager
+        vc.getAddress = self.result_AEDItems[indexPath.row]["buildAddress"]!
+        vc.getBuildPlace = self.result_AEDItems[indexPath.row]["buildPlace"]!
+        vc.getClerkTel = self.result_AEDItems[indexPath.row]["clerkTel"]!
+        vc.getManager = self.result_AEDItems[indexPath.row]["manager"]!
         
         // 지도 관련
-//        vc.getLon = AEDItem.wgs84Lon
-//        vc.getLat = AEDItem.wgs84Lat
-        
-        // 정보 넘겨주기
-        vc.getAddress = AEDItems[indexPath.row]["buildAddress"]!
-        vc.getBuildPlace = AEDItems[indexPath.row]["buildPlace"]!
-        vc.getClerkTel = AEDItems[indexPath.row]["clerkTel"]!
-        vc.getManager = AEDItems[indexPath.row]["manager"]!
-        
-        // 지도 관련
-        vc.getLon = AEDItems[indexPath.row]["wgs84Lon"]!
-        vc.getLat = AEDItems[indexPath.row]["wgs84Lat"]!
+        vc.getLon = self.result_AEDItems[indexPath.row]["wgs84Lon"]!
+        vc.getLat = self.result_AEDItems[indexPath.row]["wgs84Lat"]!
         
         
         print("\(vc.getLon)")
@@ -234,7 +220,7 @@ extension SearchViewController: UISearchBarDelegate {
         noResultLabel.isHidden = true
         
         guard let query = searchBar.text, !query.replacingOccurrences(of: "", with: "").isEmpty else {
-            noResultLabel.isHidden = false
+            noResultLabel.isHidden = true
             tableView.isHidden = true // check
             return
         }
@@ -244,12 +230,6 @@ extension SearchViewController: UISearchBarDelegate {
         // indicator show
         self.indicator.isHidden = true
         indicator.startAnimating()
-        
-        DispatchQueue.main.async {
-            for i in 0..<3 {
-                usleep(1 * 1000 * 1000)
-                print("\(i+1)")
-            }
                         
             print("검색데이터->",query)
             
@@ -273,12 +253,13 @@ extension SearchViewController: UISearchBarDelegate {
             })
         }
     }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if searchBar.text == nil {
-            noResultLabel.isHidden = true
-        }
-    }
+
+    // 갑자기 안돌아가는 것
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        if searchBar.text == nil {
+//            noResultLabel.isHidden = true
+//        }
+//    }
     
     // 스크롤했을때 새로운 페이지 보여주는 방법
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -295,19 +276,12 @@ extension SearchViewController: UISearchBarDelegate {
 //            }
 //        }
 //    }
-}
+//}
 
 extension SearchViewController: XMLParserDelegate {
     // 시작 태그를 만날때
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        
-//        currentElement = elementName
-//        if elementName == "buildAddress" || elementName == "buildPlace" || elementName == "clerkTel" || elementName == "manager" || elementName == "managerTel" || elementName == "mfg" || elementName == "model" || elementName == "org" || elementName == "wgs84Lat" || elementName == "wgs84Lon" || elementName == "zipcode1" || elementName == "zipcode2" {
-//            currentElement = ""
-//            if elementName == "buildAddress" {
-//                item = AED_Result()
-//            }
-//        }
+    
         currentElement = elementName
         if elementName == "item" {
             items = [String : String]()
@@ -329,36 +303,6 @@ extension SearchViewController: XMLParserDelegate {
     
     // 닫는 태그를 만날때
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-//        if elementName == "buildAddress" {
-//            item?.buildAddress = currentElement.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-//        } else if elementName == "buildPlace" {
-//            item?.buildPlace = currentElement
-//        } else if elementName == "clerkTel" {
-//            item?.clerkTel = currentElement
-//        } else if elementName == "manager" {
-//            item?.manager = currentElement
-//        } else if elementName == "managerTel" {
-//            item?.managerTel = currentElement
-//        } else if elementName == "mfg" {
-//            item?.mfg = currentElement
-//        } else if elementName == "model" {
-//            item?.model = currentElement
-//        } else if elementName == "org" {
-//            item?.org = currentElement
-//        } else if elementName == "wgs84Lat" {
-//            item?.wgs84Lat = currentElement
-//        } else if elementName == "wgs84Lon" {
-//            item?.wgs84Lon = currentElement
-//        } else if elementName == "zipcode1" {
-//            item?.zipcode1 = currentElement
-//        } else if elementName == "zipcode2" {
-//            item?.zipcode2 = currentElement
-//            AEDItems.append(self.item!)
-////            DispatchQueue.main.async {
-////                self.tableView.reloadData()
-////            }
-//        }
         
         if elementName == "item" {
             items["buildAddress"] = getAED_Result.buildAddress
@@ -416,9 +360,6 @@ extension SearchViewController: XMLParserDelegate {
         default:
             print("없는 값")
         }
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
     }
     
     private func parser(parser: XMLParser, parseErrorOccurred parseError: NSError) {

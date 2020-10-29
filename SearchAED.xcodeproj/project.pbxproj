@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		368C440B572700BB57BA3450 /* Pods_SearchAED_SearchAEDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B944B6DC238F1015C88FBF5 /* Pods_SearchAED_SearchAEDUITests.framework */; };
 		AC68A95D8B98D4406E72D74A /* Pods_SearchAEDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF739C553F19B1376306C2A /* Pods_SearchAEDTests.framework */; };
+		FA41AD34254AAA4B00B90C34 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41AD33254AAA4B00B90C34 /* SettingTableViewCell.swift */; };
+		FA41AD41254AACF300B90C34 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41AD40254AACF300B90C34 /* SettingViewController.swift */; };
 		FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE4252D83E300051B01 /* AppDelegate.swift */; };
 		FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA890DE6252D83E300051B01 /* SceneDelegate.swift */; };
 		FA890DEC252D83E300051B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA890DEA252D83E300051B01 /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		AAF739C553F19B1376306C2A /* Pods_SearchAEDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchAEDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4019CAE4877124FF18C1C3F /* Pods-SearchAEDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAEDTests.debug.xcconfig"; path = "Target Support Files/Pods-SearchAEDTests/Pods-SearchAEDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F59F38C9A5E2029CB5167577 /* Pods-SearchAED-SearchAEDUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAED-SearchAEDUITests.release.xcconfig"; path = "Target Support Files/Pods-SearchAED-SearchAEDUITests/Pods-SearchAED-SearchAEDUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FA41AD33254AAA4B00B90C34 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		FA41AD40254AACF300B90C34 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FA890DE1252D83E300051B01 /* SearchAED.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchAED.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA890DE4252D83E300051B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA890DE6252D83E300051B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				FA94C730253D2C0700428E29 /* Model.swift */,
 				FA94C735253D387E00428E29 /* ResultTableViewCell.swift */,
 				FA94C736253D387E00428E29 /* ResultTableViewCell.xib */,
+				FA41AD33254AAA4B00B90C34 /* SettingTableViewCell.swift */,
+				FA41AD40254AACF300B90C34 /* SettingViewController.swift */,
 			);
 			path = SearchAED;
 			sourceTree = "<group>";
@@ -428,7 +434,9 @@
 				FA94C731253D2C0700428E29 /* Model.swift in Sources */,
 				FA890DE5252D83E300051B01 /* AppDelegate.swift in Sources */,
 				FAC1CD99253E91B20098DB70 /* SearchViewController.swift in Sources */,
+				FA41AD34254AAA4B00B90C34 /* SettingTableViewCell.swift in Sources */,
 				FA890DE7252D83E300051B01 /* SceneDelegate.swift in Sources */,
+				FA41AD41254AACF300B90C34 /* SettingViewController.swift in Sources */,
 				FA9CC2E8252EA3340069DB71 /* ViewController.swift in Sources */,
 				FA94C737253D387E00428E29 /* ResultTableViewCell.swift in Sources */,
 				FA890E18252D840200051B01 /* APIDefine.swift in Sources */,

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n0X-5y-Xh0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -78,34 +78,58 @@
             </objects>
             <point key="canvasLocation" x="1302.8985507246377" y="-316.07142857142856"/>
         </scene>
-        <!--앱 현황-->
-        <scene sceneID="6aI-fI-by5">
+        <!--앱 정보-->
+        <scene sceneID="Y1c-AA-8Mf">
             <objects>
-                <tableViewController id="HLF-Bc-ny4" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wgp-mG-f2d">
+                <viewController id="L49-c9-0EV" customClass="SettingViewController" customModule="SearchAED" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ja-U6-W3b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-mi-KiG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingCell" textLabel="kHx-gJ-enX" style="IBUITableViewCellStyleDefault" id="dl8-Ue-ZoN" customClass="SettingTableViewCell" customModule="SearchAED" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dl8-Ue-ZoN" id="yTY-Mk-ccD">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kHx-gJ-enX">
+                                                    <rect key="frame" x="20" y="0.0" width="355" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingLabel" destination="kHx-gJ-enX" id="PgL-ek-q85"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ALW-Qx-B3s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="igo-q5-cgV">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="igo-q5-cgV" id="boc-7X-Ujx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HLF-Bc-ny4" id="zeZ-aR-aAc"/>
-                            <outlet property="delegate" destination="HLF-Bc-ny4" id="7fX-LO-SUB"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="앱 현황" id="VPE-eV-yef"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d0k-Eu-wzj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="VEI-mi-KiG" firstAttribute="top" secondItem="ALW-Qx-B3s" secondAttribute="top" id="Ly0-uz-cwa"/>
+                            <constraint firstItem="ALW-Qx-B3s" firstAttribute="trailing" secondItem="VEI-mi-KiG" secondAttribute="trailing" id="OIX-xV-gmD"/>
+                            <constraint firstItem="VEI-mi-KiG" firstAttribute="leading" secondItem="ALW-Qx-B3s" secondAttribute="leading" id="rij-pV-du3"/>
+                            <constraint firstItem="ALW-Qx-B3s" firstAttribute="bottom" secondItem="VEI-mi-KiG" secondAttribute="bottom" id="zJD-nI-O4i"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="앱 정보" id="lEg-60-0Hg"/>
+                    <connections>
+                        <outlet property="tableView" destination="VEI-mi-KiG" id="Iq0-sE-Oay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqg-bm-uI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303" y="1102"/>
+            <point key="canvasLocation" x="1302.8985507246377" y="1101.5625"/>
         </scene>
         <!--설정-->
         <scene sceneID="QZ2-76-WzK">
@@ -117,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="HLF-Bc-ny4" kind="relationship" relationship="rootViewController" id="0iy-ga-ZeV"/>
+                        <segue destination="L49-c9-0EV" kind="relationship" relationship="rootViewController" id="3QG-ew-Jgl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYc-sM-1Qh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
