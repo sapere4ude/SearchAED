@@ -29,10 +29,18 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         initUI()
 
-        // Do any additional setup after loading the view.
     }
     
     func initUI() {
+        
+        
+        let naverMapView = NMFNaverMapView(frame: CGRect(x: 0, y: 0, width: 390, height: 400))
+
+        naverMapView.showCompass = true
+        naverMapView.showLocationButton = true
+        naverMapView.showZoomControls = true
+        
+        mapView = naverMapView.mapView
         
         detailView.backgroundColor = .systemBackground
         addressLabel.adjustsFontSizeToFitWidth = true
@@ -49,9 +57,11 @@ class DetailViewController: UIViewController {
         param.zoom(to: 16)
         param.tilt(to: 0)
         param.rotate(to: 90)
+        
         mapView.moveCamera(NMFCameraUpdate(params: param))
         mapView.isIndoorMapEnabled = true
         mapView.isNightModeEnabled = true // 야간모드
+        
         
         let marker = NMFMarker()
         marker.position = NMGLatLng(lat: Double(getLat)!, lng: Double(getLon)!)
@@ -59,9 +69,6 @@ class DetailViewController: UIViewController {
         marker.iconImage = NMFOverlayImage(image: (UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal))!)
         marker.iconTintColor = .systemPink
         
-        
-        
-        
+        self.view.addSubview(naverMapView)
     }
-
 }
