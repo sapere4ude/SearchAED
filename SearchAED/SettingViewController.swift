@@ -10,7 +10,7 @@ import SafariServices
 
 class SettingViewController: UIViewController {
 
-    let menu = ["AED 사용법 영상보기", "버전 정보", "개발자 정보"]
+    let menu = ["AED 사용법 영상보기", "버전·개발자 정보"]
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -30,8 +30,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as! SettingTableViewCell
-
         cell.settingLabel.text = menu[indexPath.row]
+        
         return cell
     }
     
@@ -41,6 +41,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let url = URL(string: "https://www.youtube.com/watch?v=q7J2T6MFA9g")!
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
+        }
+        else if indexPath.row == 1 {
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "VersionCheckViewController") as! VersionCheckViewController
+            vc.modalTransitionStyle = .coverVertical
+
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

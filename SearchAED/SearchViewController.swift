@@ -33,6 +33,8 @@ class SearchViewController: UIViewController {
     var item: AED_Result? = nil
     
     
+    // 넘겨줄때
+    var getSearchText: String = ""
     
     private let noResultLabel: UILabel = {
         let label = UILabel()
@@ -73,6 +75,8 @@ class SearchViewController: UIViewController {
     func searchAED(search_text: String, completionHandler:@escaping (String) -> (), failureHandler:@escaping (String) ->() ) {
         
         let url: String = APIDefine.GET_searchAED_URL_information + "&Q1=" + search_text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        //getSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         //print("\(url)")
         
@@ -140,7 +144,7 @@ class SearchViewController: UIViewController {
     
     
     func initUI() {
-        searchBar.placeholder = "지역을 입력하세요"
+        searchBar.placeholder = "시·군·구 중 하나를 입력하세요"
         tableView.isHidden = true
         self.view.addSubview(indicator)
         self.view.addSubview(noResultLabel)
@@ -188,6 +192,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getAddress = self.result_AEDItems[indexPath.row]["buildAddress"]!
         vc.getBuildPlace = self.result_AEDItems[indexPath.row]["buildPlace"]!
         vc.getClerkTel = self.result_AEDItems[indexPath.row]["clerkTel"]!
+        
+        
+        guard let number = URL(string: "tel://" + vc.getClerkTel) else { return }
+        UIApplication.shared.open(number)
+        
         vc.getManager = self.result_AEDItems[indexPath.row]["manager"]!
         
         // 지도 관련
@@ -205,7 +214,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
         
         return headerView
     }
@@ -224,6 +233,8 @@ extension SearchViewController: UISearchBarDelegate {
             tableView.isHidden = true // check
             return
         }
+        
+        getSearchText = String(searchBar.text!)
         
         searchBar.resignFirstResponder()
         
@@ -252,31 +263,36 @@ extension SearchViewController: UISearchBarDelegate {
                 print("error: \(error)")
             })
         }
-    }
-
+    
     // 갑자기 안돌아가는 것
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        if searchBar.text == nil {
-//            noResultLabel.isHidden = true
-//        }
-//    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == nil {
+            noResultLabel.isHidden = true
+        }
+    }
     
     // 스크롤했을때 새로운 페이지 보여주는 방법
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print("scrollView:\(scrollView.contentOffset.y)")
-//        let offset = scrollView.contentOffset
-//        let bounds = scrollView.bounds
-//        let size = scrollView.contentSize
-//        let inset = scrollView.contentInset
-//        let y = offset.y + bounds.size.height - inset.bottom
-//        let h = size.height
-//
-//        if y + self.callNextPageBeforeOffset >= h {
-//            if !self.isQuery && !self.reachEnd {
-//            }
-//        }
-//    }
-//}
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("scrollView:\(scrollView.contentOffset.y)")
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let y = offset.y + bounds.size.height - inset.bottom
+        let h = size.height
+
+        if y + self.callNextPageBeforeOffset >= h {
+            if !self.isQuery && !self.reachEnd {
+                self.searchAED(search_text: getSearchText, completionHandler: { success in
+                  print("success : \(success)")
+                    
+                },failureHandler: { error in
+                    print("error: \(error)")
+                })
+            }
+        }
+    }
+}
 
 extension SearchViewController: XMLParserDelegate {
     // 시작 태그를 만날때

@@ -62,11 +62,10 @@ class DetailViewController: UIViewController {
         mapView.isIndoorMapEnabled = true
         mapView.isNightModeEnabled = true // 야간모드
         
-        
         let marker = NMFMarker()
         marker.position = NMGLatLng(lat: Double(getLat)!, lng: Double(getLon)!)
         marker.mapView = mapView
-        marker.iconImage = NMFOverlayImage(image: (UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal))!)
+        marker.iconImage = NMFOverlayImage(image: (UIImage(systemName: "bolt.heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemRed, renderingMode: .alwaysOriginal))!)
         marker.iconTintColor = .systemPink
         
         self.view.addSubview(naverMapView)

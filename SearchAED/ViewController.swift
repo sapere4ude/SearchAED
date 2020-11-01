@@ -11,8 +11,6 @@ import NMapsMap
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    private let location: [String] = ["서울","경기","인천","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","강원도","제주"]
-    
     // XML 파싱할때 사용
     var parser = XMLParser()
     var currentElement:String = ""
@@ -24,10 +22,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        네이버 지도 불러오기
-//        let nmapFView = NMFMapView(frame: view.frame)
-//        view.addSubview(nmapFView)
         
         // XML Parsing
         let url: String = APIDefine.GET_searchAED_URL_FullData
@@ -80,7 +74,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(#function)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         vc.modalTransitionStyle = .coverVertical

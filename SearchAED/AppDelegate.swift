@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         UINavigationBar.appearance().tintColor = UIColor.white // 뒤로가기 버튼 색상설정
         
+        sleep(1)
+        
         return true
     }
 
